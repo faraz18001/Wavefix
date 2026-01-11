@@ -2,7 +2,7 @@
 
 WaveFix is a full-stack Retrieval-Augmented Generation (RAG) application designed to provide automated technical support. It uses advanced LLMs to answer user queries based on a knowledge base of uploaded documents (PDFs).
 
-## 🚀 Key Features
+## Key Features
 
 *   **RAG Architecture**: Retrieve and answer questions from local PDF documentation.
 *   **Modern Frontend**: Built with **React**, **Vite**, and **Tailwind CSS** for a responsive and premium UI.
@@ -11,19 +11,19 @@ WaveFix is a full-stack Retrieval-Augmented Generation (RAG) application designe
 *   **Secure Auth**: User signup and login functionality with JWT.
 *   **Persistance**: SQLite database for storing chat history and user data.
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 *   **Frontend**: React.js, Tailwind CSS V4, Lucide React (Icons).
 *   **Backend**: Python 3.12+, FastAPI, SQLAlchemy.
 *   **AI/ML**: LangChain, OpenAI GPT-4 (Configurable), FAISS (Vector Store).
 
-## 📋 Prerequisites
+## Prerequisites
 
 *   Python 3.10+
 *   Node.js 18+
 *   OpenAI API Key
 
-## ⚡ Quick Start
+## Quick Start
 
 ### 1. Backend Setup
 
@@ -79,6 +79,6 @@ npm run dev
 ```
 *App runs at `http://localhost:5173`*
 
-## 📚 Knowledge Base
+## Knowledge Base
 
 Place your PDF documents in `BackEnd/documents/`. The system auto-loads and recursively chunks them for the RAG retriever upon startup.
