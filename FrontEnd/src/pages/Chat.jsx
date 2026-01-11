@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
 import { getChatSessions, getSessionMessages, sendChatMessage, logout } from '../services/api';
 
 function Chat() {
@@ -186,12 +187,12 @@ function Chat() {
                             </div>
                             <div className="flex flex-col gap-2 max-w-[90%] md:max-w-[75%]">
                                 <div className="flex items-center gap-2 mb-0.5">
-                                    <span className="text-text-main text-xs font-semibold">Support AI</span>
+                                    <span className="text-text-main text-xs font-semibold">WaveFix</span>
                                     <span className="text-text-muted text-[10px] border border-border-subtle px-1 rounded uppercase tracking-wider">System</span>
                                 </div>
                                 <div className="bg-ai-bubble border border-border-subtle rounded-lg p-5 text-text-main shadow-sm">
                                     <p className="text-[14px] leading-6 text-gray-300">
-                                        Hello! I'm your AI support assistant. I can help with technical queries, documentation, or account support. What's on your mind?
+                                        Hello! I'm WaveFix, your support assistant. I can help with technical queries, documentation, or account support. What's on your mind?
                                     </p>
                                 </div>
                             </div>
@@ -209,15 +210,30 @@ function Chat() {
                             <div className={`flex flex-col gap-2 max-w-[90%] md:max-w-[75%] ${msg.role === 'user' ? 'items-end' : ''}`}>
                                 {msg.role === 'ai' && (
                                     <div className="flex items-center gap-2 mb-0.5">
-                                        <span className="text-text-main text-xs font-semibold">Support AI</span>
+                                        <span className="text-text-main text-xs font-semibold">WaveFix</span>
                                         <span className="text-text-muted text-[10px] border border-border-subtle px-1 rounded uppercase tracking-wider">RAG Model</span>
                                     </div>
                                 )}
 
-                                <div className={`${msg.role === 'user' ? 'bg-user-bubble text-white shadow-sm border border-blue-900/50' : 'bg-ai-bubble border border-border-subtle text-text-main'} rounded-lg p-5 shadow-sm`}>
-                                    <p className="text-[14px] leading-6 whitespace-pre-wrap">
+                                <div className={`${msg.role === 'user' ? 'bg-user-bubble text-white shadow-sm border border-blue-900/50' : 'bg-ai-bubble border border-border-subtle text-text-main'} rounded-lg p-5 shadow-sm text-[14px] leading-6`}>
+                                    <ReactMarkdown
+                                        components={{
+                                            p: ({ node, ...props }) => <p className="mb-2 last:mb-0" {...props} />,
+                                            ul: ({ node, ...props }) => <ul className="list-disc pl-4 mb-2" {...props} />,
+                                            ol: ({ node, ...props }) => <ol className="list-decimal pl-4 mb-2" {...props} />,
+                                            li: ({ node, ...props }) => <li className="mb-0.5" {...props} />,
+                                            code: ({ node, inline, ...props }) =>
+                                                inline
+                                                    ? <code className="bg-white/10 px-1 py-0.5 rounded text-xs font-mono" {...props} />
+                                                    : <code className="block bg-black/50 p-2 rounded text-xs font-mono my-2 overflow-x-auto whitespace-pre" {...props} />,
+                                            a: ({ node, ...props }) => <a className="text-primary hover:underline" {...props} />,
+                                            h1: ({ node, ...props }) => <h1 className="text-lg font-bold mb-2" {...props} />,
+                                            h2: ({ node, ...props }) => <h2 className="text-base font-bold mb-2" {...props} />,
+                                            h3: ({ node, ...props }) => <h3 className="text-sm font-bold mb-1" {...props} />,
+                                        }}
+                                    >
                                         {msg.content}
-                                    </p>
+                                    </ReactMarkdown>
 
                                     {msg.role === 'ai' && msg.sources && msg.sources.length > 0 && (
                                         <div className="pt-4 mt-4 border-t border-border-subtle">
@@ -226,7 +242,7 @@ function Chat() {
                                                 Sources
                                             </p>
                                             <div className="flex flex-wrap gap-2">
-                                                {msg.sources.map((src, i) => (
+                                                {[...new Map(msg.sources.map(src => [src.document_name, src])).values()].map((src, i) => (
                                                     <a key={i} className="flex items-center gap-2 px-3 py-1.5 rounded border border-border-subtle hover:bg-white/5 hover:border-gray-600 transition-all no-underline" href="#" onClick={(e) => e.preventDefault()}>
                                                         <span className="material-symbols-outlined text-[14px] text-text-muted">description</span>
                                                         <span className="text-xs font-medium text-gray-400">{src.document_name}</span>
@@ -236,24 +252,6 @@ function Chat() {
                                         </div>
                                     )}
                                 </div>
-
-                                {msg.role === 'ai' && msg.tokens && (
-                                    <div className="flex items-center gap-4 px-1 mt-1">
-                                        <span className="text-[10px] font-mono text-text-muted flex items-center gap-1.5">
-                                            TOKENS: {msg.tokens}
-                                        </span>
-                                        <span className="text-text-muted opacity-30">|</span>
-                                        <span className="text-[10px] font-mono text-text-muted flex items-center gap-1.5">
-                                            COST: ${msg.cost?.toFixed(5)}
-                                        </span>
-                                        <div className="flex-1"></div>
-                                        <div className="flex gap-1">
-                                            <button className="p-1 text-text-muted hover:text-white transition-colors" title="Copy">
-                                                <span className="material-symbols-outlined text-[14px]">content_copy</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                )}
                             </div>
 
                             {msg.role === 'user' && (
@@ -286,7 +284,7 @@ function Chat() {
                             </div>
                             <input
                                 className="w-full bg-black/40 border border-border-subtle text-text-main placeholder-zinc-600 focus:ring-1 focus:ring-zinc-600 focus:border-zinc-500 rounded-md py-3 pl-10 pr-12 text-sm font-normal"
-                                placeholder="Message Support AI..."
+                                placeholder="Message WaveFix..."
                                 type="text"
                                 value={input}
                                 onChange={(e) => setInput(e.target.value)}
@@ -305,7 +303,7 @@ function Chat() {
                                 </button>
                             </div>
                         </form>
-                        <p className="text-center text-[10px] text-zinc-600 font-mono mt-1">AI can make mistakes. Please verify important information.</p>
+                        <p className="text-center text-[10px] text-zinc-600 font-mono mt-1">WaveFix can make mistakes. Please verify important information.</p>
                     </div>
                 </div>
             </main>

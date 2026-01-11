@@ -34,7 +34,7 @@ function Login() {
                     <div className="size-8 rounded bg-primary flex items-center justify-center text-white">
                         <span className="material-symbols-outlined text-[20px]">smart_toy</span>
                     </div>
-                    <h2 className="text-base font-semibold tracking-wide text-white">TechSupport AI</h2>
+                    <h2 className="text-base font-semibold tracking-wide text-white">WaveFix</h2>
                 </div>
                 <a className="hidden sm:flex text-sm font-medium text-zinc-500 hover:text-white transition-colors" href="#">
                     Contact Support
