@@ -1,0 +1,6 @@
+{
+    "python.analysis.autoImportCompletions": true,
+    "editor.fontFamily": "'0xProto Nerd Font Mono', 'Fira Code', Consolas, monospace",
+    "editor.codeLensFontFamily": "'0xProto Nerd Font Mono', 'Fira Code', Consolas, monospace",
+    "editor.inlayHints.fontFamily": "'0xProto Nerd Font Mono', 'Fira Code', Consolas, monospace"
+}

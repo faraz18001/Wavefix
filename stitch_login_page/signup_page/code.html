@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Signup - TechSupport AI</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#6366f1", 
+                        "primary-hover": "#4f46e5",
+                        "background-dark": "#09090b", // Solid Zinc 950
+                        "surface-dark": "#18181b", // Solid Zinc 900
+                        "border-dark": "#27272a", // Zinc 800
+                    },
+                    fontFamily: {
+                        "sans": ["Inter", "sans-serif"]
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }input:-webkit-autofill,
+        input:-webkit-autofill:hover, 
+        input:-webkit-autofill:focus, 
+        input:-webkit-autofill:active{
+            -webkit-box-shadow: 0 0 0 30px #18181b inset !important;
+            -webkit-text-fill-color: white !important;
+            transition: background-color 5000s ease-in-out 0s;
+        }
+    </style>
+</head>
+<body class="bg-background-dark min-h-screen flex flex-col text-zinc-100 antialiased selection:bg-primary selection:text-white">
+<header class="w-full px-8 py-6 flex items-center justify-between absolute top-0 left-0">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[20px]">smart_toy</span>
+</div>
+<h2 class="text-base font-semibold tracking-wide text-white">TechSupport AI</h2>
+</div>
+<a class="hidden sm:flex text-sm font-medium text-zinc-500 hover:text-white transition-colors" href="#">
+        Contact Support
+    </a>
+</header>
+<main class="flex-1 flex items-center justify-center p-6 min-h-screen">
+<div class="w-full max-w-[420px] animate-fade-in-up">
+<div class="bg-surface-dark border border-border-dark rounded-2xl p-8 md:p-10 shadow-2xl">
+<div class="text-center mb-8">
+<h1 class="text-2xl font-bold text-white mb-2 tracking-tight">Create an account</h1>
+<p class="text-zinc-400 text-sm">Enter your details to get started.</p>
+</div>
+<form class="space-y-5" onsubmit="event.preventDefault();">
+<div class="space-y-1.5">
+<label class="block text-xs font-medium text-zinc-400 uppercase tracking-wider" for="username">Username</label>
+<input class="w-full bg-transparent border border-border-dark rounded-lg px-4 py-3 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" id="username" name="username" placeholder="johndoe" required="" type="text"/>
+</div>
+<div class="space-y-1.5">
+<div class="flex justify-between items-baseline">
+<label class="block text-xs font-medium text-zinc-400 uppercase tracking-wider" for="email">Email</label>
+<span class="text-[10px] text-zinc-600">OPTIONAL</span>
+</div>
+<input class="w-full bg-transparent border border-border-dark rounded-lg px-4 py-3 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" id="email" name="email" placeholder="name@example.com" type="email"/>
+</div>
+<div class="space-y-1.5">
+<label class="block text-xs font-medium text-zinc-400 uppercase tracking-wider" for="password">Password</label>
+<div class="relative">
+<input class="w-full bg-transparent border border-border-dark rounded-lg px-4 py-3 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all pr-10" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+<button class="absolute inset-y-0 right-0 pr-3 flex items-center text-zinc-500 hover:text-zinc-300 transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-primary-hover text-white font-semibold rounded-lg py-3 text-sm transition-colors mt-6 shadow-lg shadow-primary/20">
+                    Create Account
+                </button>
+<p class="text-xs text-center text-zinc-500 mt-5 leading-relaxed">
+                    By clicking continue, you agree to our 
+                    <a class="text-zinc-400 hover:text-white underline underline-offset-2 transition-colors" href="#">Terms</a> 
+                    and 
+                    <a class="text-zinc-400 hover:text-white underline underline-offset-2 transition-colors" href="#">Privacy Policy</a>.
+                </p>
+</form>
+<div class="relative my-8">
+<div class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-border-dark"></div>
+</div>
+<div class="relative flex justify-center text-[10px] uppercase tracking-widest">
+<span class="bg-surface-dark px-3 text-zinc-500">Or continue with</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-2 px-4 py-2.5 border border-border-dark rounded-lg hover:bg-zinc-800 transition-colors text-zinc-300 text-sm font-medium">
+<img alt="Google Logo" class="w-4 h-4" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6DJ2zEdo6xGztlbM2NozmEVlBj0RQPx2RDx1uHjQAeb8Gf3jP2I1kZi6EZlDkc6JEkSZMrwu9v0YR1mFf78NDj8mBCC7_7GSGag7QUhR158O_yW6RP4bqzpyFs0bP-RczdkjE6SHJ3cUhubudTZ9257Wr_yb4O3yQikDTrE8o3I3alcMRgAvxQ8WQFkj5C0dQcijProyhq08pptr3BNXc_TkAbIICVXcs1DMzK2dIu9LYg62Gpin7-1lClDW6_tZTR2LADU1Chg"/>
+                     Google
+                </button>
+<button class="flex items-center justify-center gap-2 px-4 py-2.5 border border-border-dark rounded-lg hover:bg-zinc-800 transition-colors text-zinc-300 text-sm font-medium">
+<img alt="GitHub Logo" class="w-4 h-4 invert opacity-90" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwbW0xoOnJL1gVUw0ZwNm_EBfi7zxSU3Y2W8Re-rWjwTHCScpaTc5JeoRhPQe8ZH3yhzjOKnn8frzUDYaLTrRIT7UT1W3Kc1sEyEcR2vFlX1vaVG2LutZ6sap1R30M4IbAmaHnWpHQyHkkduV0rsnQwZHCW6CeptJEjJSZfp7DVNW_1ON6Nlx5FrPE-YRzVvuuSJEGJpjv9mC117sxcpsnn8CW6gVnlbOAjVATLAGwohYpj9cckD6WOCbNKe4hRFDVO89m0ubxHA"/>
+                    GitHub
+                </button>
+</div>
+</div>
+<div class="mt-8 text-center text-sm text-zinc-500">
+            Already have an account? 
+            <a class="text-primary hover:text-primary-hover font-medium transition-colors" href="#">
+                Log in
+            </a>
+</div>
+</div>
+</main>
+
+</body></html>

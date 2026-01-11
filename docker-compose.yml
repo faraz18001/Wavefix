@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: ai-app-backend
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      - FLASK_ENV=production
+      - PYTHONPATH=/app
+      - CHAINLIT_AUTH_SECRET=2cd71f6b10f7fe9363916501acb60b51fabcd73760f669e4aeb8060dff911d9f
+      - DATABASE_URL=sqlite:///./chat_app.db
+      - JWT_SECRET_KEY=2cd71f6b10f7fe9363916501acb60b51fabcd73760f669e4aeb8060dff911d9f
+      - ACCESS_TOKEN_EXPIRE_MINUTES=60
+      - BACKEND_URL=http://localhost:8000
+    volumes:
+      - ./backend/documents:/app/documents
+      - ./backend/chat_app.db:/app/chat_app.db
+      - ./backend/.env:/app/.env 
+    networks:
+      - ai-app-network
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./FrontEnd
+      dockerfile: Dockerfile
+    container_name: ai-app-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_API_URL=http://backend:8000
+    depends_on:
+      - backend
+    networks:
+      - ai-app-network
+    restart: unless-stopped
+
+networks:
+  ai-app-network:
+    driver: bridge
+
+volumes:
+  ai-app-data:
