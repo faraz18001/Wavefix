@@ -2,6 +2,17 @@
 
 WaveFix is a full-stack Retrieval-Augmented Generation (RAG) application designed to provide automated technical support. It uses advanced LLMs to answer user queries based on a knowledge base of uploaded documents (PDFs).
 
+## App Screenshots
+
+### Sign Up
+![Sign Up](screens/Signup.png)
+
+### Sign In
+![Sign In](screens/Signin.png)
+
+### Chat Interface
+![Chat Interface](screens/Chat.png)
+
 ## Key Features
 
 *   **RAG Architecture**: Retrieve and answer questions from local PDF documentation.
